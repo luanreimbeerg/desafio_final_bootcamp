@@ -15,9 +15,9 @@ jobs:
           npm ci
           $(npm bin)/cypress verify
       - name: Run Cypress tests
-        run: npm run cy:run
+        run: npm run test
         continue-on-error: true
 
       - name: Merge test reports
-        run: npm run cy:run
+        run: npm run test
           

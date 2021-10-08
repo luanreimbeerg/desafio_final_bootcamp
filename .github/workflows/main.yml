@@ -1,0 +1,23 @@
+name: RUn tests 
+
+on: 
+  push:
+    branches: [main]
+    
+jobs: 
+  cypress-run:
+    runs-on: ubuntu-16.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install cypress and verify
+        run: |
+          npm ci
+          $(npm bin)/cypress verify
+      - name: Run Cypress tests
+        run: npm run test
+        continue-on-error: true
+
+      - name: Merge test reports
+        run: npm run test
+          
